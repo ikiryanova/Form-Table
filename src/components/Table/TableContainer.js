@@ -10,18 +10,23 @@ const TableContainer = ({ dataTable, setTable, isLoading }) => {
 
   useEffect(() => {
     setTable();
-  }, [dataTable])
+  }, [])
 
   if (!isLoading) {
     return <Preloader />;
   }
 
-  const tableHeader = Object.keys(dataTable[0].numbers);
+  const tableHeader = Object.keys(dataTable[0].numbers); // массив названий столбцов 
 
   return (
     <div className="wrapper">
       <table className="table">
         <TableHeader items={tableHeader} />
+        <tbody>
+          {dataTable.map((row) => (
+            <TableBody numbers={row.numbers} row={row} key={row.id} />   
+          ))}
+        </tbody>
         <tfoot>
           <tr>
             <th>Sum</th>
@@ -41,11 +46,6 @@ const TableContainer = ({ dataTable, setTable, isLoading }) => {
             <th>Sum</th>
           </tr>
         </tfoot>
-        <tbody>
-          {dataTable.map((item) => (
-            <TableBody numbers={item.numbers} item={item} key={item.id} />
-          ))}
-        </tbody>
       </table>
     </div>
   );
