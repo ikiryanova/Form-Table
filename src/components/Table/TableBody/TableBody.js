@@ -4,7 +4,7 @@ import cn from 'classnames';
 import { Field, FieldArray, reduxForm } from 'redux-form';
 
 const TableBody = (props) => {
-  const { handleSubmit, dataTable, error } = props;
+  const { handleSubmit, dataTable } = props;
   return (
     <form onSubmit={handleSubmit}>
       <FieldArray name="users" component={RenderUsers} inicialValues={dataTable}/>
@@ -47,9 +47,15 @@ const RenderNumbers = ({ fields, meta: { error } }) => {
   return (
     <>
       {fields.map((number, index) => (
-        <Field name={number} component={RenderField} key={index} placeholder="number" />
+        <ul className="table" key={index}>
+          <Field name={number} component={RenderField} placeholder="number" />
+          {(fields.length > 4 )&&
+            <button type="button" onClick={() => fields.remove(index)}>
+              X
+            </button>}
+        </ul>
       ))}
-      <button type="button" onClick={() => fields.push({})}>
+      <button type="button" onClick={() => fields.push()}>
         Add numbers
       </button>
       {error && <span className="error-text">{error}</span>}

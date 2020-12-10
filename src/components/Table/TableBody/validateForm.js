@@ -1,6 +1,5 @@
 const validate = (values) => {
   const errors = {};
-  debugger;
   if (!values.users || !values.users.length) {
     errors.users = {_error: 'Добавьте пользователя'}
   } else {
@@ -14,19 +13,23 @@ const validate = (values) => {
       if (user && user.numbers && user.numbers.length) {
         const numbersArrayErrors = [];
         user.numbers.forEach((number, numberIndex) => {
-          if ( !number || number.length) {
-            numbersArrayErrors[numberIndex] = 'Required'
+          if (!number || !number.length) {
+            numbersArrayErrors[numberIndex] = 'Required';
+          }
+          
+          if (!Number(number)) {
+            numbersArrayErrors[numberIndex] = 'Not string'
           }
         });
         if (numbersArrayErrors.length) {
           userErrors.numbers = numbersArrayErrors;
           usersArrayErrors[userIndex] = userErrors;
         }
-        if (user.numbers.length !== 5) {
+        if (user.numbers.length !== 4) {
           if (!userErrors.numbers) {
             userErrors.numbers = [];
           }
-          userErrors.numbers._error = 'Должно быть 5 чисел';
+          userErrors.numbers._error = 'Должно быть 4 числа';
           usersArrayErrors[userIndex] = userErrors;
         }
       }

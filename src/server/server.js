@@ -3,32 +3,21 @@ const data = [
     name: 'Irina',
     numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
   },
-  // {
-  //   id: 2,
-  //   name: 'Alex',
-  //   numbers: {
-  //     num1: 987,
-  //     num2: 2,
-  //     num3: 3,
-  //     num4: 4,
-  //     num5: 5,
-  //     num6: 6,
-  //     num7: 7,
-  //     num8: 8,
-  //     num9: 9,
-  //     num10: 10,
-  //     num11: 11,
-  //     num12: 12,
-  //     num13: 13,
-  //     num14: 14,
-  //   },
-  //},
 ];
 
-export const server = () => {
-  const promise = new Promise(response => {
+export const serverGetData = () => {
+  const promise = new Promise((response) => {
     setTimeout(() => {
-      response(data)
+      response(data);
+    }, 2000);
+  });
+  return promise;
+};
+
+export const serverSubmitData = (dataForm) => {
+  const promise = new Promise((response) => {
+    setTimeout(() => {
+      response(dataForm);
     }, 2000);
   });
   return promise;
