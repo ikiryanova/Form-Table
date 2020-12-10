@@ -1,30 +1,54 @@
 import React from 'react'
-import TableForm from './TableForm/TableForm';
+import { Field, FieldArray, reduxForm } from 'redux-form';
 
-const TableBody = ({ numbers, row }) => {
-  const valuesNumbers = Object.values(numbers); // массив значений numbers.num1, numbers.num2 и т.д.
-
-  const data = {
-    name: row.name,
-    num1: row.numbers.num1,
-    num2: row.numbers.num2,
-    num3: row.numbers.num3,
-    num4: row.numbers.num4,
-    num5: row.numbers.num5,
-    num6: row.numbers.num6,
-    num7: row.numbers.num7,
-    num8: row.numbers.num8,
-    num9: row.numbers.num9,
-    num10: row.numbers.num10,
-    num11: row.numbers.num11,
-    num12: row.numbers.num12,
-    num13: row.numbers.num13,
-    num14: row.numbers.num14,
-  };
-
+const TableBody = (props) => {
+  console.log(props)
+  const { handleSubmit } = props;
   return (
-    <TableForm valuesNumbers={valuesNumbers} initialValues={data} />
+    <form onSubmit={handleSubmit}>
+      <div>Hello</div>
+      <FieldArray name="users" component={RenderUsers} />
+      <button type="submit">
+        Submit
+      </button>
+    </form>
   );
 };
 
-export default TableBody;
+export default reduxForm({
+  form: 'fieldArrays',
+})(TableBody);
+
+const RenderUsers = ({ fields }) => {
+  return (
+    <>
+      <button type="button" onClick={() => fields.push({})}>
+        Add User
+      </button>
+      {fields.map((user, index) => (
+        <tr key={index}>
+          <Field name={`${user}.name`} type="text" component={RenderField} />
+          <FieldArray name={`${user}.numbers`} component={RenderNumbers} />
+        </tr>
+      ))}
+    </>
+  );
+}
+
+const RenderNumbers = ({ fields }) => {
+  return (
+    <>
+      {fields.map((number, index) => (
+        <Field name={number} type="number" component={RenderField} key={index} />
+      ))}
+    </>
+  );
+}
+
+const RenderField = ({ input, type }) => {
+  return (
+    <td>
+      <input {...input} type={type} />
+    </td>
+  );
+};
