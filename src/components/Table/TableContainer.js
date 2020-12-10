@@ -2,49 +2,31 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux';
 import Preloader from '../../common/Preloader/Preloader';
 import { setTable } from '../../redux/table-reduser';
-import TableHeader from './TableHeader';
 import './table.css'
-import TableBody from './TableBody';
+import TableBody from './TableBody/TableBody';
 
 const TableContainer = ({ dataTable, setTable, isLoading }) => {
 
   useEffect(() => {
     setTable();
-  }, [])
+  }, []);
+
+  const onSubmit = (formData) => {
+    console.log('submit', formData)
+  }
 
   if (!isLoading) {
     return <Preloader />;
   }
 
-  //const tableHeader = Object.keys(dataTable[0].numbers); // массив названий столбцов 
 
   return (
     <div className="wrapper">
-      <table className="table">
-        {/* <TableHeader items={tableHeader} /> */}
-        <tbody>
-          <TableBody />
-        </tbody>
-        {/* <tfoot>
-          <tr>
-            <th>Sum</th>
-            <th>Sum</th>
-            <th>Sum</th>
-            <th>Sum</th>
-            <th>Sum</th>
-            <th>Sum</th>
-            <th>Sum</th>
-            <th>Sum</th>
-            <th>Sum</th>
-            <th>Sum</th>
-            <th>Sum</th>
-            <th>Sum</th>
-            <th>Sum</th>
-            <th>Sum</th>
-            <th>Sum</th>
-          </tr>
-        </tfoot> */}
-      </table>
+      <ul className="table">
+        <li>
+          <TableBody dataTable={dataTable} onSubmit={onSubmit}/>
+        </li>
+      </ul>
     </div>
   );
 };
