@@ -16,9 +16,8 @@ const validate = (values) => {
           if (!number || !number.length) {
             numbersArrayErrors[numberIndex] = 'Required';
           }
-          
           if (!Number(number)) {
-            numbersArrayErrors[numberIndex] = 'Not string'
+            numbersArrayErrors[numberIndex] = 'Type number'
           }
         });
         if (numbersArrayErrors.length) {
@@ -38,7 +37,6 @@ const validate = (values) => {
       errors.users = usersArrayErrors;
     }
   }
-  console.log('errors', errors);
   return errors;
 }
 

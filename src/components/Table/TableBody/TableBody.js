@@ -2,13 +2,17 @@ import React from 'react'
 import validate from './validateForm';
 import cn from 'classnames';
 import { Field, FieldArray, reduxForm } from 'redux-form';
+import TableSum from '../../TableSum/TableSum';
 
 const TableBody = (props) => {
-  const { handleSubmit, dataTable } = props;
+  const { handleSubmit, dataTable, sum } = props;
   return (
     <form onSubmit={handleSubmit}>
-      <FieldArray name="users" component={RenderUsers} inicialValues={dataTable}/>
-      <button type="submit" className="btn-main">Submit</button>
+      <FieldArray name="users" component={RenderUsers} inicialValues={dataTable} />
+      {/* {sum.length !== 0 && <TableSum sum={sum} />} */}
+      <button type="submit" className="btn-main btn-submit">
+        Submit
+      </button>
     </form>
   );
 };
@@ -23,12 +27,14 @@ const RenderUsers = ({ fields, meta: { error, submitFailed } }) => {
     <>
       {fields.map((user, index) => (
         <ul key={index} className="table users">
-          <Field
-            name={`${user}.name`}
-            type="text"
-            component={RenderField}
-            placeholder="user name"
-          />
+          <li>
+            <Field
+              name={`${user}.name`}
+              type="text"
+              component={RenderField}
+              placeholder="user name"
+            />
+          </li>
           <FieldArray name={`${user}.numbers`} component={RenderNumbers} />
           <button className="btn-remove" type="button" onClick={() => fields.remove(index)}>
             Remove user
@@ -44,20 +50,30 @@ const RenderUsers = ({ fields, meta: { error, submitFailed } }) => {
 }
 
 const RenderNumbers = ({ fields, meta: { error } }) => {
+  const createNumbersField = () => {
+    const numbers = 4;
+    for (let i = 0; i < numbers; i++) {
+      fields.push();
+    }
+  }
+
   return (
     <>
       {fields.map((number, index) => (
-        <ul className="table" key={index}>
-          <Field name={number} component={RenderField} placeholder="number" />
-          {(fields.length > 4 )&&
+        <li key={index}>
+          <Field name={number} type="number" component={RenderField} placeholder="number" />
+          {fields.length > 4 && (
             <button type="button" onClick={() => fields.remove(index)}>
               X
-            </button>}
-        </ul>
+            </button>
+          )}
+        </li>
       ))}
-      <button type="button" onClick={() => fields.push()}>
-        Add numbers
-      </button>
+      {(fields.length !== 4) &&
+        <button type="button" onClick={() => createNumbersField()}>
+          Add numbers
+        </button>
+      }
       {error && <span className="error-text">{error}</span>}
     </>
   );
@@ -65,8 +81,7 @@ const RenderNumbers = ({ fields, meta: { error } }) => {
 
 const RenderField = ({ input, type, placeholder, meta: {touched, error} }) => {
   return (
-    <li>
-      <input {...input} type={type} placeholder={placeholder} className={cn("input", {"error-input": touched && error})}/>
-    </li>
+    <input {...input} type={type} placeholder={placeholder} className={cn("input", {"error-input": touched && error})}/>
   );
 };
+        

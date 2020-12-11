@@ -1,19 +1,32 @@
 .wrapper {
   margin: 30px auto;
+  display: flex;
+  flex-direction: column;
   display: inline-block;
 }
 
 .table {
-  /* border-collapse: collapse;
-  border: 1px solid #000; */
   display: flex;
 }
 
-.input {
+.table-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.table-sum, .loading {
+  margin-top: 15px;
+}
+
+.input, .sum {
   width: 80px;
   padding: 5px;
   font-size: 16px;
   margin: 0 2px;
+}
+
+.sum {
+  border: 1px solid #000;
 }
 
 .btn-main {
