@@ -2,14 +2,12 @@ import React from 'react'
 import validate from './validateForm';
 import cn from 'classnames';
 import { Field, FieldArray, reduxForm } from 'redux-form';
-import TableSum from '../../TableSum/TableSum';
 
 const TableBody = (props) => {
-  const { handleSubmit, dataTable, sum } = props;
+  const { handleSubmit } = props;
   return (
     <form onSubmit={handleSubmit}>
-      <FieldArray name="users" component={RenderUsers} inicialValues={dataTable} />
-      {/* {sum.length !== 0 && <TableSum sum={sum} />} */}
+      <FieldArray name="users" component={RenderUsers} />
       <button type="submit" className="btn-main btn-submit">
         Submit
       </button>
@@ -41,10 +39,10 @@ const RenderUsers = ({ fields, meta: { error, submitFailed } }) => {
           </button>
         </ul>
       ))}
+      {submitFailed && error && <div className="error-text">Ошибка: {error}</div>}
       <button type="button" onClick={() => fields.push({})} className="btn-main btn-add">
         Add user
       </button>
-      {submitFailed && error && <div className="error-text">Ошибка:{error}</div>}
     </>
   );
 }

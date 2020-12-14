@@ -16,9 +16,6 @@ const validate = (values) => {
           if (!number || !number.length) {
             numbersArrayErrors[numberIndex] = 'Required';
           }
-          if (!Number(number)) {
-            numbersArrayErrors[numberIndex] = 'Type number'
-          }
         });
         if (numbersArrayErrors.length) {
           userErrors.numbers = numbersArrayErrors;
@@ -31,6 +28,8 @@ const validate = (values) => {
           userErrors.numbers._error = 'Должно быть 4 числа';
           usersArrayErrors[userIndex] = userErrors;
         }
+      } else {
+        errors.users = { _error: 'Добавьте числа' };
       }
     });
     if (usersArrayErrors.length) {

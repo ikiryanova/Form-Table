@@ -22,7 +22,7 @@ const TableContainer = ({ dataTable, setTable, isLoading, submitDataTable, sum, 
   return (
     <div className="wrapper">
       <ul className="table-block">
-        <TableBody dataTable={dataTable} onSubmit={onSubmit} sum={sum} />
+        <TableBody onSubmit={onSubmit} inicialValues={dataTable} />
         {serverLoading && <div className="loading">Loading...</div>}
         {sum.length !== 0 && <TableSum sum={sum} />}
       </ul>
