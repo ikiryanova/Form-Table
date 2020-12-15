@@ -1,7 +1,7 @@
 import thunkMiddleware from 'redux-thunk';
 import { reducer as formReducer } from 'redux-form';
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
-import tableReduser from '../table-reduser';
+import tableReduser from '../redusers/table';
 
 let redusers = combineReducers({
   table: tableReduser,

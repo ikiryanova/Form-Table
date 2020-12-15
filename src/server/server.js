@@ -1,12 +1,12 @@
 const data = {
-  users: [
+  rows: [
     {
-      name: 'Irina',
-      numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+      name: 'test000',
+      numbers: [0, 2, 3, 4],
     },
     {
-      name: 'Oleg',
-      numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+      name: 'test001',
+      numbers: [1, 2, 3, 4],
     },
   ]
 };
@@ -19,4 +19,14 @@ export const serverData = (dataForm = data) => {
   });
   return promise;
 }
+
+export const serverUpdateData = (dataForm) => {
+  data.rows = [...data.rows, ...dataForm.rows.filter(row => !data.rows.includes(row))];
+  const promise = new Promise((response) => {
+    setTimeout(() => {
+      response(data);
+    }, 2000);
+  });
+  return promise;
+};
 

@@ -1,13 +1,14 @@
-import React from 'react'
-import validate from './validateForm';
+import React, { useEffect } from 'react'
 import cn from 'classnames';
+
+import validate from './validateForm';
 import { Field, FieldArray, reduxForm } from 'redux-form';
 
 const TableBody = (props) => {
   const { handleSubmit } = props;
   return (
     <form onSubmit={handleSubmit}>
-      <FieldArray name="users" component={RenderUsers} />
+      <FieldArray name="rows" component={RenderRow} />
       <button type="submit" className="btn-main btn-submit">
         Submit
       </button>
@@ -20,58 +21,55 @@ export default reduxForm({
   validate
 })(TableBody);
 
-const RenderUsers = ({ fields, meta: { error, submitFailed } }) => {
+const RenderRow = (props) => {
+  const { fields, meta: { error, submitFailed } } = props;
   return (
     <>
-      {fields.map((user, index) => (
-        <ul key={index} className="table users">
+      {fields.map((row, index) => (
+        <ul key={index} className="table row">
           <li>
             <Field
-              name={`${user}.name`}
+              name={`${row}.name`}
               type="text"
               component={RenderField}
-              placeholder="user name"
+              placeholder="name"
             />
           </li>
-          <FieldArray name={`${user}.numbers`} component={RenderNumbers} />
+          <FieldArray name={`${row}.numbers`} component={RenderNumbers} />
+          <button type="button" onClick={() => fields.push({})} className="btn-add">
+            add new row
+          </button>
           <button className="btn-remove" type="button" onClick={() => fields.remove(index)}>
-            Remove user
+            remove current row
           </button>
         </ul>
       ))}
       {submitFailed && error && <div className="error-text">Ошибка: {error}</div>}
       <button type="button" onClick={() => fields.push({})} className="btn-main btn-add">
-        Add user
+        add row
       </button>
     </>
   );
 }
 
 const RenderNumbers = ({ fields, meta: { error } }) => {
+  useEffect(() => {
+    createNumbersField();
+  }, []);
+
   const createNumbersField = () => {
     const numbers = 4;
     for (let i = 0; i < numbers; i++) {
       fields.push();
     }
   }
-
   return (
     <>
       {fields.map((number, index) => (
         <li key={index}>
           <Field name={number} type="number" component={RenderField} placeholder="number" />
-          {fields.length > 4 && (
-            <button type="button" onClick={() => fields.remove(index)}>
-              X
-            </button>
-          )}
         </li>
       ))}
-      {(fields.length !== 4) &&
-        <button type="button" onClick={() => createNumbersField()}>
-          Add numbers
-        </button>
-      }
       {error && <span className="error-text">{error}</span>}
     </>
   );
