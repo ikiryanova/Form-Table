@@ -3,19 +3,14 @@ import { connect } from 'react-redux';
 
 import Preloader from '../../common/Preloader/Preloader';
 import { setTable, setSumNumbers, submitDataTable } from '../../redux/actions/table';
-import TableSum from '../TableSum/TableSum';
-import TableBody from './TableBody/TableBody';
+import { TableBody } from './TableBody';
+import { TableSum } from './TableSum';
 import './table.css'
-import TableInicial from './TableBody/TableInicial';
 
 const TableContainer = ({ dataTable, setTable, isLoading, submitDataTable, sum }) => {
-  // useEffect(() => {
-  //   setTable();
-  // }, []);
-
-  const getTable = () => {
+  useEffect(() => {
     setTable();
-  }
+  }, []);
 
   const onSubmit = (formData) => {
     submitDataTable(formData);
@@ -27,10 +22,8 @@ const TableContainer = ({ dataTable, setTable, isLoading, submitDataTable, sum }
 
   return (
     <div className="wrapper">
-      <button onClick={() => getTable()}>get table</button>
       <ul>
-        {dataTable.length !== 0 && <TableInicial dataTable={dataTable} />}
-        <TableBody onSubmit={onSubmit} />
+        <TableBody onSubmit={onSubmit} inicialValues={dataTable} />
         {dataTable.length !== 0 && <TableSum sum={sum} />}
       </ul>
     </div>
