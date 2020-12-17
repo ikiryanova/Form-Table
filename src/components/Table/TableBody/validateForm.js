@@ -10,12 +10,6 @@ const validate = ({ rows }) => {
         rowErrors.name = 'Required';
         rowsArrayErrors[rowIndex] = rowErrors;
       }
-      // const repeatName = rows.filter(item => item.name === rows[rows.length-1].name);
-      // console.log('repeatName', repeatName);
-      // if(repeatName.length) {
-      //   rowErrors.name = 'Names should not be repeated';
-      //   rowsArrayErrors[rowIndex] = rowErrors;
-      // }
       if (row && row.numbers && row.numbers.length) {
         const numbersArrayErrors = [];
         row.numbers.forEach((number, numberIndex) => {
