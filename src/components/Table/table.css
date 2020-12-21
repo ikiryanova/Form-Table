@@ -19,7 +19,7 @@
 }
 
 .input, .sum {
-  width: 90px;
+  width: 120px;
   padding: 5px;
   font-size: 16px;
   margin: 0 2px;
@@ -29,8 +29,9 @@
   border: 1px solid #000;
 }
 
-.btn-main {
-  margin-top: 20px;
+.btn-submit {
+  display: block;
+  margin: 20px auto;
 }
 
 .btn-add {
