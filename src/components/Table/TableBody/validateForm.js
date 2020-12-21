@@ -1,39 +1,39 @@
 const validate = (values) => {
   const errors = {};
-  if (!values.users || !values.users.length) {
-    errors.users = {_error: 'Добавьте пользователя'}
+  if (!values.rows || !values.rows.length) {
+    errors.rows = {_error: 'Добавьте пользователя'}
   } else {
-    const usersArrayErrors = [];
-    values.users.forEach((user, userIndex) => {
-      const userErrors = {};
-      if (!user.name) {
-        userErrors.name = 'Required';
-        usersArrayErrors[userIndex] = userErrors;
+    const rowsArrayErrors = [];
+    values.rows.forEach((row, rowIndex) => {
+      const rowErrors = {};
+      if (!row.name) {
+        rowErrors.name = 'Required';
+        rowsArrayErrors[rowIndex] = rowErrors;
       }
-      if (user && user.numbers && user.numbers.length) {
+      if (row && row.numbers && row.numbers.length) {
         const numbersArrayErrors = [];
-        user.numbers.forEach((number, numberIndex) => {
+        row.numbers.forEach((number, numberIndex) => {
           if (!number || !number.length) {
             numbersArrayErrors[numberIndex] = 'Required';
           }
         });
         if (numbersArrayErrors.length) {
-          userErrors.numbers = numbersArrayErrors;
-          usersArrayErrors[userIndex] = userErrors;
+          rowErrors.numbers = numbersArrayErrors;
+          rowsArrayErrors[rowIndex] = rowErrors;
         }
-        if (user.numbers.length !== 4) {
-          if (!userErrors.numbers) {
-            userErrors.numbers = [];
+        if (row.numbers.length !== 4) {
+          if (!rowErrors.numbers) {
+            rowErrors.numbers = [];
           }
-          userErrors.numbers._error = 'Должно быть 4 числа';
-          usersArrayErrors[userIndex] = userErrors;
+          rowErrors.numbers._error = 'Должно быть 4 числа';
+          rowsArrayErrors[rowIndex] = rowErrors;
         }
       } else {
-        errors.users = { _error: 'Добавьте числа' };
+        errors.rows = { _error: 'Добавьте числа' };
       }
     });
-    if (usersArrayErrors.length) {
-      errors.users = usersArrayErrors;
+    if (rowsArrayErrors.length) {
+      errors.rows = rowsArrayErrors;
     }
   }
   return errors;

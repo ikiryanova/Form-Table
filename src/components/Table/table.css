@@ -9,12 +9,12 @@
   display: flex;
 }
 
-.table-block {
+.table ul{
   display: flex;
   flex-direction: column;
 }
 
-.table-sum, .loading {
+.table-sum {
   margin-top: 15px;
 }
 
@@ -43,7 +43,7 @@
   background-color: rgb(255, 189, 177);
 }
 
-.users {
+.row {
   margin-bottom: 4px;
 }
 

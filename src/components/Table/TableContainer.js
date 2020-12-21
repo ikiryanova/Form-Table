@@ -1,30 +1,37 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux';
-import Preloader from '../../common/Preloader/Preloader';
-import { setTable, submitDataTable } from '../../redux/table-reduser';
-import TableSum from '../TableSum/TableSum';
-import './table.css'
-import TableBody from './TableBody/TableBody';
 
-const TableContainer = ({ dataTable, setTable, isLoading, submitDataTable, sum, serverLoading }) => {
-  useEffect(() => {
+import Preloader from '../../common/Preloader/Preloader';
+import { setTable, setSumNumbers, submitDataTable } from '../../redux/actions/table';
+import TableSum from '../TableSum/TableSum';
+import TableBody from './TableBody/TableBody';
+import './table.css'
+import TableInicial from './TableBody/TableInicial';
+
+const TableContainer = ({ dataTable, setTable, isLoading, submitDataTable, sum }) => {
+  // useEffect(() => {
+  //   setTable();
+  // }, []);
+
+  const getTable = () => {
     setTable();
-  }, []);
+  }
 
   const onSubmit = (formData) => {
     submitDataTable(formData);
   };
 
-  if (!isLoading) {
+  if (isLoading) {
     return <Preloader />;
   }
 
   return (
     <div className="wrapper">
-      <ul className="table-block">
-        <TableBody onSubmit={onSubmit} inicialValues={dataTable} />
-        {serverLoading && <div className="loading">Loading...</div>}
-        {sum.length !== 0 && <TableSum sum={sum} />}
+      <button onClick={() => getTable()}>get table</button>
+      <ul>
+        {dataTable.length !== 0 && <TableInicial dataTable={dataTable} />}
+        <TableBody onSubmit={onSubmit} />
+        {dataTable.length !== 0 && <TableSum sum={sum} />}
       </ul>
     </div>
   );
@@ -37,4 +44,4 @@ const mapStateToProps = (state) => ({
   serverLoading: state.table.serverLoading
 });
 
-export default connect(mapStateToProps, { setTable, submitDataTable })(TableContainer);
+export default connect(mapStateToProps, { setTable, setSumNumbers, submitDataTable })(TableContainer);
