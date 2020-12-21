@@ -1,12 +1,12 @@
 import { SET_DATA_TABLE, SET_SUM_NUMBERS, SET_LOADING } from '../constants';
 
-const inicialState = {
+const initialState = {
   data: [],
   sum: [],
   isLoading: false
 };
 
-const tableReduser = (state = inicialState, action) => {
+const tableReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_DATA_TABLE:
       return { ...state, data: action.data };
@@ -19,7 +19,7 @@ const tableReduser = (state = inicialState, action) => {
   }
 };
 
-export default tableReduser;
+export default tableReducer;
 
 
 
