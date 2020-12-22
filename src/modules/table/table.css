@@ -18,7 +18,7 @@
   margin-top: 15px;
 }
 
-.input, .sum {
+.input {
   width: 120px;
   padding: 5px;
   font-size: 16px;
@@ -26,7 +26,7 @@
 }
 
 .sum {
-  border: 1px solid #000;
+ background: rgb(230, 221, 250);
 }
 
 .btn-submit {
@@ -42,6 +42,11 @@
 .btn-remove {
   border: 1px solid rgb(228, 117, 97);
   background-color: rgb(255, 189, 177);
+}
+
+.btn-load {
+  border: 1px solid rgb(160, 228, 97);
+  background-color: rgb(215, 255, 177);
 }
 
 .row {

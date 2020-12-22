@@ -1,4 +1,4 @@
-import { SET_DATA_TABLE, SET_SUM_NUMBERS, SET_LOADING } from '../constants';
+import { SET_DATA_TABLE, SET_SUM_NUMBERS, SET_LOADING } from '../../modules/table/table-constants';
 
 const initialState = {
   data: [],
@@ -6,7 +6,7 @@ const initialState = {
   isLoading: false
 };
 
-const tableReducer = (state = initialState, action) => {
+export const tableReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_DATA_TABLE:
       return { ...state, data: action.data };
@@ -18,8 +18,6 @@ const tableReducer = (state = initialState, action) => {
       return state;
   }
 };
-
-export default tableReducer;
 
 
 

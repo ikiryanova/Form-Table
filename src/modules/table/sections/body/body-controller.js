@@ -1,4 +1,4 @@
-const validate = ({ rows }) => {
+export const validate = ({ rows }) => {
   const errors = {};
   if (!rows || !rows.length) {
     errors.rows = {_error: 'Add rows'}
@@ -38,5 +38,3 @@ const validate = ({ rows }) => {
   }
   return errors;
 }
-
-export default validate;

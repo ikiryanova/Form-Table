@@ -1,7 +1,7 @@
 import _ from 'lodash';
 
-import { SET_DATA_TABLE, SET_SUM_NUMBERS, SET_LOADING } from '../constants';
-import { serverUpdateData } from '../../server/server';
+import { SET_DATA_TABLE, SET_SUM_NUMBERS, SET_LOADING } from './table-constants';
+import { serverUpdateData, serverUpdateSum } from '../../server';
 
 export const setDataTable = (data) => ({ type: SET_DATA_TABLE, data });
 export const setSumNumbers = (sum) => ({ type: SET_SUM_NUMBERS, sum });
@@ -12,16 +12,19 @@ export const setTable = () => async (dispatch) => {
   const data = await serverUpdateData();
   dispatch(setLoading(false));
   dispatch(setDataTable(data));
-  dispatch(setSumNumbers(sumNumbers(data)));
 };
 
-export const submitDataTable = (dataForm) => async (dispatch) => {
-  const data = await serverUpdateData(dataForm);
-  dispatch(setDataTable(data));
-  dispatch(setSumNumbers(sumNumbers(data)));
+export const submitDataTable = (dataForm) => () => {
+  serverUpdateData(dataForm);
 };
 
- const sumNumbers = (data) => {
+export const updateSumNumbers = (dataForm) => async (dispatch) => {
+  const sum = sumNumbers(dataForm);
+  dispatch(setSumNumbers(sum));
+  serverUpdateSum(sum);
+}
+
+const sumNumbers = (data) => {
   const arrNumbers = [];
   const arrArgs = [];
 
