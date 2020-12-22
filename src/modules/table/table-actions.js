@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import { zipWith } from 'lodash';
 
 import { SET_DATA_TABLE, SET_SUM_NUMBERS, SET_LOADING } from './table-constants';
 import { serverUpdateData, serverUpdateSum } from '../../server';
@@ -35,7 +35,7 @@ const sumNumbers = (data) => {
     arrArgs.push(`row${index}`);
   });
 
-  const result = _.zipWith(...arrNumbers, function (...arrArgs) {
+  const result = zipWith(...arrNumbers, function (...arrArgs) {
     let result = 0;
     arrArgs.forEach((item) => {
       result += Number(item);
