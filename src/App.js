@@ -1,11 +1,11 @@
-import TableContainer from './components/Table/TableContainer';
+import { Table } from './modules/table/';
 
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <TableContainer />
+      <Table />
     </div>
   );
 }

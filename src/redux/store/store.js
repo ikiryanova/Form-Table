@@ -1,7 +1,7 @@
 import thunkMiddleware from 'redux-thunk';
 import { reducer as formReducer } from 'redux-form';
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
-import tableReducer from '../reducers/table';
+import { tableReducer } from '../reducers';
 
 let reducers = combineReducers({
   table: tableReducer,
@@ -10,6 +10,6 @@ let reducers = combineReducers({
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const store = createStore(reducers, composeEnhancers(applyMiddleware(thunkMiddleware)));
+export const store = createStore(reducers, composeEnhancers(applyMiddleware(thunkMiddleware)));
 
-export default store;
+ 
