@@ -14,7 +14,9 @@ export const setTable = () => async (dispatch) => {
   dispatch(setDataTable(data));
 };
 
-export const submitDataTable = (dataForm) => () => {
+export const submitDataTable = (dataForm) => (dispatch, getState) => {
+  // const state = getState();
+  // const isLoading = getIsLoading(state);
   serverUpdateData(dataForm);
 };
 

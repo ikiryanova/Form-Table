@@ -1,3 +1,4 @@
+// TODO (kiryanova) - move to body-helpers.js
 export const validate = ({ rows }) => {
   const errors = {};
   if (!rows || !rows.length) {
@@ -38,3 +39,4 @@ export const validate = ({ rows }) => {
   }
   return errors;
 }
+

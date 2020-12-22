@@ -1,3 +1,5 @@
+// TODO - разделить на компоненты и модули
+// все переменные вынести в константы
 import React, { useEffect } from 'react'
 import { Field, FieldArray, reduxForm } from 'redux-form';
 import { compose } from 'redux';
@@ -6,6 +8,8 @@ import cn from 'classnames';
 
 import { validate } from './body-controller';
 
+//TODO - move to components\text-field
+// className переделать в аттрибуты
 const RenderField = ({ input, type, placeholder, className='', meta: { touched, error } }) => {
   return (
     <input
@@ -17,6 +21,7 @@ const RenderField = ({ input, type, placeholder, className='', meta: { touched, 
   );
 };
 
+// TODO - move to body/sections/row & rename to RowComponent
 const RenderNumbers = ({ fields, className, meta: { error } }) => {
   useEffect(() => {
     if (fields.length !== 4) {
@@ -39,7 +44,7 @@ const RenderNumbers = ({ fields, className, meta: { error } }) => {
   );
 };
 
-const RenderRow = ({ fields, meta: { error, submitFailed } }) => {
+const RenderRows = ({ fields, meta: { error, submitFailed } }) => {
   return (
     <>
       {fields.map((row, index) => (
@@ -66,7 +71,7 @@ const RenderRow = ({ fields, meta: { error, submitFailed } }) => {
   );
 };
 
-const RenderSum = (props) => {
+const ResultsComponent = (props) => {
   const { fields } = props;
   return (
     <>
@@ -92,8 +97,8 @@ const TableForm = (props) => {
   const { handleSubmit } = props;
   return (
     <form onSubmit={handleSubmit}>
-      <FieldArray name="rows" component={RenderRow} />
-      <FieldArray name="sum" component={RenderSum} />
+      <FieldArray name="rows" component={RenderRows} />
+      <FieldArray name="sum" component={ResultsComponent} />
       {props.initialValues.length !== 0 && (
         <button type="submit" className="btn-submit">
           submit

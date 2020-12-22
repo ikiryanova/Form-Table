@@ -1,12 +1,11 @@
 import React from 'react'
-import { connect } from 'react-redux';
 
 import Preloader from '../../common/Preloader/Preloader';
-import { setTable, submitDataTable, updateSumNumbers } from './table-actions';
 import { TableBody } from './sections/body';
+
 import './table.css'
 
-const TableContainer = ({ setTable, isLoading, submitDataTable, updateSumNumbers, sum }) => {
+export const TableComponent = ({ setTable, isLoading, submitDataTable, updateSumNumbers, sum }) => {
 
   const LoadingTable = () => {
     setTable();
@@ -35,11 +34,3 @@ const TableContainer = ({ setTable, isLoading, submitDataTable, updateSumNumbers
     </div>
   );
 };
-
-const mapStateToProps = (state) => ({
-  sum: state.table.sum,
-  isLoading: state.table.isLoading,
-});
-
-export const Table = connect(mapStateToProps, { setTable, submitDataTable, updateSumNumbers })(TableContainer);
-
