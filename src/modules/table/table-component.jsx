@@ -1,12 +1,11 @@
 import React from 'react'
-import { connect } from 'react-redux';
 
-import Preloader from '../../common/Preloader/Preloader';
-import { setTable, submitDataTable, updateSumNumbers } from './table-actions';
-import { TableBody } from './sections/body';
-import './table.css'
+import Preloader from '../../components/preloader/Preloader';
+import { TableBody } from './sections/table-body';
 
-const TableContainer = ({ setTable, isLoading, submitDataTable, updateSumNumbers, sum }) => {
+import style from './table.module.scss';
+
+export const TableComponent = ({ setTable, isLoading, submitDataTable, updateSumNumbers }) => {
 
   const LoadingTable = () => {
     setTable();
@@ -27,19 +26,11 @@ const TableContainer = ({ setTable, isLoading, submitDataTable, updateSumNumbers
   }
 
   return (
-    <div className="wrapper">
+    <div className={style.wrapper}>
       <ul>
         <TableBody onSubmit={onSubmit} onChange={onChange} />
-        <button onClick={LoadingTable} className="btn-load">loading table</button>
+        <button onClick={LoadingTable} className={style.btnLoad}>loading table</button>
       </ul>
     </div>
   );
 };
-
-const mapStateToProps = (state) => ({
-  sum: state.table.sum,
-  isLoading: state.table.isLoading,
-});
-
-export const Table = connect(mapStateToProps, { setTable, submitDataTable, updateSumNumbers })(TableContainer);
-

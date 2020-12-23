@@ -1,4 +1,4 @@
-import { SET_DATA_TABLE, SET_SUM_NUMBERS, SET_LOADING } from '../../modules/table/table-constants';
+import { SET_DATA_TABLE, SET_SUM_NUMBERS, SET_LOADING } from '../../constants';
 
 const initialState = {
   data: [],

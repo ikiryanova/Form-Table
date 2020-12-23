@@ -1,1 +1,2 @@
-export { Table } from './table-component';
+export { TableController as Table } from './table-controller';
+

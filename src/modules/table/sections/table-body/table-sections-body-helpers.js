@@ -1,7 +1,7 @@
 export const validate = ({ rows }) => {
   const errors = {};
   if (!rows || !rows.length) {
-    errors.rows = {_error: 'Add rows'}
+    errors.rows = { _error: 'Add rows' };
   } else {
     const rowsArrayErrors = [];
     rows.forEach((row, rowIndex) => {
@@ -37,4 +37,4 @@ export const validate = ({ rows }) => {
     }
   }
   return errors;
-}
+};

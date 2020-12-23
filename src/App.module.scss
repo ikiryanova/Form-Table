@@ -1,0 +1,25 @@
+.app {
+  text-align: center;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+button {
+  font-size: 16px;
+  padding: 5px;
+  margin: 0 6px;
+  outline: none;
+  border: 1px solid rgb(97, 202, 228);
+  background-color: rgb(177, 239, 255);
+}
+
+button:active {
+  background-color: rgb(97, 202, 228);
+}

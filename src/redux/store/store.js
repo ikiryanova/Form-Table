@@ -3,7 +3,7 @@ import { reducer as formReducer } from 'redux-form';
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import { tableReducer } from '../reducers';
 
-let reducers = combineReducers({
+const reducers = combineReducers({
   table: tableReducer,
   form: formReducer,
 });

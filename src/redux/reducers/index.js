@@ -1,1 +1,1 @@
-export { tableReducer } from './table';
+export { tableReducer } from './table-reducer';
