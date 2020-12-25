@@ -1,11 +1,11 @@
 import React from 'react'
 
-import Preloader from '../../common/Preloader/Preloader';
-import { TableBody } from './sections/body';
+import Preloader from '../../components/preloader/Preloader';
+import { TableBody } from './sections/table-body';
 
-import './table.css'
+import style from './table.module.scss';
 
-export const TableComponent = ({ setTable, isLoading, submitDataTable, updateSumNumbers, sum }) => {
+export const TableComponent = ({ setTable, isLoading, submitDataTable, updateSumNumbers }) => {
 
   const LoadingTable = () => {
     setTable();
@@ -26,10 +26,10 @@ export const TableComponent = ({ setTable, isLoading, submitDataTable, updateSum
   }
 
   return (
-    <div className="wrapper">
+    <div className={style.wrapper}>
       <ul>
         <TableBody onSubmit={onSubmit} onChange={onChange} />
-        <button onClick={LoadingTable} className="btn-load">loading table</button>
+        <button onClick={LoadingTable} className={style.btnLoad}>loading table</button>
       </ul>
     </div>
   );

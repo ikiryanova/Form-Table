@@ -1,10 +1,10 @@
 import { Table } from './modules/table/';
 
-import './App.css';
+import style from './App.module.scss';
 
 function App() {
   return (
-    <div className="App">
+    <div className={style.app}>
       <Table />
     </div>
   );

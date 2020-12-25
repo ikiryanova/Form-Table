@@ -1,3 +1,8 @@
 import { createSelector } from 'reselect';
 
-export const getIsLoading = createSelector();
+const isLoading = (state) => state.table.isLoading;
+
+export const getIsLoading = createSelector(isLoading, 
+  (isLoading) => isLoading
+);
+

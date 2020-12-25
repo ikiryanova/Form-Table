@@ -13,14 +13,7 @@ export const serverUpdateData = (dataForm) => {
 };
 
 export const serverUpdateSum = (sum) => {
-  const initialSum = sum.map((item, index) => {
-    if (!item) {
-      return data.sum[0].numbers[index];
-    }
-    return item;
-  });
-
-  data.sum[0].numbers = initialSum;
+  data.sum[0].numbers = sum;
   const promise = new Promise((response) => {
     setTimeout(() => {
       response();
