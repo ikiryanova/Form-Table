@@ -19,14 +19,8 @@ const data = {
     {
       name: 'test004',
       numbers: [0.0007, 2.8, 30, -0.4],
-    }
+    },
   ],
-  sum: [
-    {
-      name: 'ИТОГО',
-      numbers: [0, 0, 0, 0]
-    }
-  ]
 };
 
 export default data;

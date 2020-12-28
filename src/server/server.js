@@ -11,13 +11,3 @@ export const serverUpdateData = (dataForm) => {
   });
   return promise;
 };
-
-export const serverUpdateSum = (sum) => {
-  data.sum[0].numbers = sum;
-  const promise = new Promise((response) => {
-    setTimeout(() => {
-      response();
-    }, 2000);
-  });
-  return promise;
-};

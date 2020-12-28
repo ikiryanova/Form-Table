@@ -1,1 +1,1 @@
-export { serverUpdateData, serverUpdateSum } from './server';
+export { serverUpdateData } from './server';

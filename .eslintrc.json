@@ -1,0 +1,60 @@
+{
+    "env": {
+        "browser": true,
+        "node": true,
+        "es6": true
+    },
+    "extends": ["react-app"],
+    "parserOptions": {
+        "ecmaFeatures": {
+            "experimentalObjectRestSpread": true,
+            "jsx": true
+        },
+        "ecmaVersion": 2017,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react"
+    ],
+    "rules": {
+        "indent": [
+            "warn",
+            2,
+            {
+                "SwitchCase": 1
+            }
+        ],
+        "semi": ["warn", "always"],
+        "no-console": ["warn", { "allow": ["debug"] }],
+        "max-len": [
+            "error",
+            120,
+            2,
+            {
+                "ignoreUrls": true,
+                "ignoreComments": false,
+                "ignoreRegExpLiterals": true,
+                "ignoreStrings": false,
+                "ignoreTemplateLiterals": true
+            }
+        ],
+        "curly": ["error", "all"],
+        "object-curly-spacing": ["error", "always"],
+        "jsx-quotes": ["error", "prefer-double"],
+        "quotes": ["error", "single", { "avoidEscape": true }],
+        "comma-dangle": [
+            "error",
+            {
+                "arrays": "always-multiline",
+                "objects": "always-multiline",
+                "imports": "always-multiline",
+                "exports": "always-multiline",
+                "functions": "always-multiline"
+            }
+        ],
+        "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 0 }],
+        "no-multi-spaces": "error",
+        "no-use-before-define": ["warn", { "functions": false, "classes": false }]
+    },
+    "parser": "babel-eslint"
+}

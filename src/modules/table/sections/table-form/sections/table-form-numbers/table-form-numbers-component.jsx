@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { Field } from 'redux-form';
 
-import { number } from '../table-body-sections-constants';
-import { TextFieldComponent } from '../../../../../../components/text-field';
+import { number } from '../table-form-sections-constants';
+import { TextField } from '../../../../../../components/text-field';
 
-import style from './numbers.module.scss';
+import style from './table-form-numbers.module.scss';
 
 export const NumbersComponent = ({ fields, meta: { error }, classResults }) => {
   useEffect(() => {
@@ -20,7 +20,7 @@ export const NumbersComponent = ({ fields, meta: { error }, classResults }) => {
     <>
       {fields.map((num, index) => (
         <li key={index}>
-          <Field name={num} type={number} component={TextFieldComponent} placeholder={number} classResults={classResults}/>
+          <Field name={num} type={number} component={TextField} placeholder={number} classResults={classResults} />
         </li>
       ))}
       {error && <span className={style.errorText}>{error}</span>}

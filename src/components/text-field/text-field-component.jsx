@@ -9,7 +9,7 @@ export const TextFieldComponent = ({ input, type, placeholder, classResults, met
       {...input}
       type={type}
       placeholder={placeholder}
-      className={cn(style.input, {[style.results]: classResults}, {[style.errorInput]: touched && error })}
+      className={ cn(style.input, { [style.results]: classResults }, { [style.errorInput]: touched && error })}
     />
   );
 };
