@@ -1,17 +1,14 @@
 import React from 'react';
-import { FieldArray } from 'redux-form';
 
-import { Results } from '../table-form-results';
-import { sum } from '../table-form-sections-constants';
+import style from './table-form-footer.module.scss';
 
 export const TableFormFooterComponent = ({ tableResults }) => {
   return (
     <>
-      {/* <FieldArray name={sum} component={Results} tableResults={ tableResults } /> */}
-      {tableResults.length !== 0 && <ul>
-        <li>ИТОГО</li>
+      {tableResults.length !== 0 && <ul className={style.Row}>
+        <li className={style.Result}>ИТОГО</li>
         {tableResults.map((result, index) => (
-          <li key={index}>{result}</li>
+          <li key={index} className={style.Result}>{result}</li>
         ))}
       </ul>}
     </>

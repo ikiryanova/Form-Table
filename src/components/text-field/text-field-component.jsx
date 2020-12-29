@@ -3,13 +3,13 @@ import cn from 'classnames';
 
 import style from './text-field.module.scss';
 
-export const TextFieldComponent = ({ input, type, placeholder, classResults, meta: { touched, error } }) => {
+export const TextFieldComponent = ({ input, type, placeholder, meta: { touched, error } }) => {
   return (
     <input
       {...input}
       type={type}
       placeholder={placeholder}
-      className={ cn(style.input, { [style.results]: classResults }, { [style.errorInput]: touched && error })}
+      className={ cn(style.Input, { [style.ErrorInput]: touched && error })}
     />
   );
 };

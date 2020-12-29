@@ -1,18 +1,18 @@
-.row {
+.Row {
   display: flex;
   margin-bottom: 4px;
 }
 
-.btnAdd {
+.BtnAdd {
   border: 1px solid rgb(97, 228, 152);
   background-color: rgb(177, 255, 203);
 }
 
-.btnRemove {
+.BtnRemove {
   border: 1px solid rgb(228, 117, 97);
   background-color: rgb(255, 189, 177);
 }
 
-.errorText {
+.ErrorText {
   color: red;
 }

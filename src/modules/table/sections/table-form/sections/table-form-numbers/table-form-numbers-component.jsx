@@ -19,11 +19,16 @@ export const NumbersComponent = ({ fields, meta: { error }, classResults }) => {
   return (
     <>
       {fields.map((num, index) => (
-        <li key={index}>
-          <Field name={num} type={number} component={TextField} placeholder={number} classResults={classResults} />
-        </li>
+        <Field 
+          name={num} 
+          type={number} 
+          component={TextField} 
+          placeholder={number} 
+          classResults={classResults} 
+          key={index}
+        />
       ))}
-      {error && <span className={style.errorText}>{error}</span>}
+      {error && <span className={style.ErrorText}>{error}</span>}
     </>
   );
 };

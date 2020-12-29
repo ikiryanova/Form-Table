@@ -1,18 +1,16 @@
 import { createSelector } from 'reselect';
 import { get, zipWith } from 'lodash';
 
-const getTable = (state) => state.table;
-const dataTable = get(getTable, 'data', []);
+const getTable = (state) => get(state.table, 'data', []);
 
-export const getTableData = createSelector(dataTable, (data) => data);
+export const getTableData = createSelector(getTable, (data) => data);
 
 const sumNumbers = (data) => {
   const arrNumbers = [];
   const arrArgs = [];
 
-  if (!data) {
-    data = {};
-    data.rows = [];
+  if (!data || !data.rows) {
+    return [];
   }
 
   data.rows.forEach((row, index) => {
@@ -30,7 +28,6 @@ const sumNumbers = (data) => {
   return result;
 };
 
-const getDataForm = (state) => state.form;
-const dataForm = get(getDataForm, 'tableBody.values', []);
+export const getDataForm = (state) => get(state.form, 'tableBody.values', []);
 
-export const getTableResults = createSelector(dataForm, (data) => sumNumbers(data));
+export const getTableResults = createSelector(getDataForm, (data) => sumNumbers(data));

@@ -6,8 +6,8 @@ import { rows } from '../table-form-sections-constants';
 
 export const TableFormBodyComponent = () => {
   return (
-    <>
+    <ul>
       <FieldArray name={rows} component={Row} />
-    </>
+    </ul>
   );
 };

@@ -5,30 +5,18 @@ import { TableForm } from './sections/table-form';
 
 import style from './table.module.scss';
 
-export const TableComponent = ({ setTable, isLoading, submitDataTable, updateSumNumbers }) => {
-
-  const loadingTable = () => {
-    setTable();
-  };
-
-  const onSubmit = (formData) => {
-    submitDataTable(formData);
-  };
-
-  // const onChange = (formData) => {
-  //   if (formData.length !== 0) {
-  //     updateSumNumbers(formData);
-  //   }
-  // };
+export const TableComponent = ({ setTable, isLoading, submitDataTable }) => {
 
   if (isLoading) {
     return <Preloader />;
   }
 
   return (
-    <div className={style.wrapper}>
-      <TableForm onSubmit={onSubmit} />
-      <button onClick={loadingTable} className={style.btnLoad}>loading table</button>
+    <div className={style.Wrapper}>
+      <TableForm onSubmit={() => submitDataTable()} />
+      <button onClick={() => setTable()} className={style.BtnLoad}>
+        loading table
+      </button>
     </div>
   );
 };

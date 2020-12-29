@@ -9,9 +9,7 @@ import { tableBody } from './table-form-constants';
 import { TableForm } from './table-form-component';
 
 const mapStateToProps = createStructuredSelector({
-  initialValues: createStructuredSelector({
-    tableData: getTableData,
-  }),
+  initialValues: getTableData,
   tableResults: getTableResults,
 });
 
