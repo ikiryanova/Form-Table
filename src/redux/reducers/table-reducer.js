@@ -1,11 +1,11 @@
 import { SET_DATA_TABLE, SET_LOADING } from '../../constants';
 
-const initialState = {
+const INITIAL_STATE = {
   data: [],
   isLoading: false,
 };
 
-export const tableReducer = (state = initialState, action) => {
+export const tableReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case SET_DATA_TABLE:
       return { ...state, data: action.data };

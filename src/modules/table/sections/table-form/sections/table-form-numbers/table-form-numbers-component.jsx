@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Field } from 'redux-form';
 
-import { number } from '../table-form-sections-constants';
+import { NUMBER } from '../table-form-sections-constants';
 import { TextField } from '../../../../../../components/text-field';
 
 import style from './table-form-numbers.module.scss';
@@ -21,9 +21,9 @@ export const NumbersComponent = ({ fields, meta: { error }, classResults }) => {
       {fields.map((num, index) => (
         <Field 
           name={num} 
-          type={number} 
+          type={NUMBER} 
           component={TextField} 
-          placeholder={number} 
+          placeholder={NUMBER} 
           classResults={classResults} 
           key={index}
         />

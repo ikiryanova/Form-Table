@@ -1,9 +1,11 @@
 import { createSelector } from 'reselect';
 import { get, zipWith } from 'lodash';
 
-const getTable = (state) => get(state.table, 'data', []);
+import { TABLE_BODY } from './table-form-constants';
 
-export const getTableData = createSelector(getTable, (data) => data);
+const getTable = (state) => state.table;
+
+export const getTableData = createSelector(getTable, (table) => get(table, 'data', []));
 
 const sumNumbers = (data) => {
   const arrNumbers = [];
@@ -28,6 +30,8 @@ const sumNumbers = (data) => {
   return result;
 };
 
-export const getDataForm = (state) => get(state.form, 'tableBody.values', []);
+const getForm = (state) => state.form;
 
-export const getTableResults = createSelector(getDataForm, (data) => sumNumbers(data));
+export const getFormData = createSelector(getForm, (form) => get(form, `${TABLE_BODY}.values`, []));
+
+export const getTableResults = createSelector(getForm, (form) => sumNumbers(get(form, `${TABLE_BODY}.values`, [])));

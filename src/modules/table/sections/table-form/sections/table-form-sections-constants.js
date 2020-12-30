@@ -1,7 +1,7 @@
-export const text = 'text';
-export const number = 'number';
-export const name = 'name';
-export const numbers = 'numbers';
-export const button = 'button';
-export const rows = 'rows';
-export const sum = 'sum';
+export const TEXT = 'text';
+export const NUMBER = 'number';
+export const NAME = 'name';
+export const NUMBERS = 'numbers';
+export const BUTTON = 'button';
+export const ROWS = 'rows';
+export const SUM = 'sum';

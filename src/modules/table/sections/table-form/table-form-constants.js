@@ -1,2 +1,2 @@
-export const submit = 'submit';
-export const tableBody = 'tableBody';
+export const SUBMIT = 'submit';
+export const TABLE_BODY = 'tableBody';

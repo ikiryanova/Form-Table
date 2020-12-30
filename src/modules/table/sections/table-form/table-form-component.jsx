@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { submit } from './table-form-constants';
+import { SUBMIT } from './table-form-constants';
 import { TableFormBody } from './sections/table-form-body';
 import { TableFormFooter } from './sections/table-form-footer';
 
@@ -11,8 +11,8 @@ export const TableForm = ({ handleSubmit, initialValues, tableResults }) => {
     <form onSubmit={handleSubmit}>
       <TableFormBody />
       <TableFormFooter tableResults={tableResults} />
-      {initialValues.length !==0 && (
-        <button type={submit} className={style.BtnSubmit}>
+      {initialValues.length !== 0 && (
+        <button type={SUBMIT} className={style.BtnSubmit}>
           submit
         </button>
       )}

@@ -5,7 +5,7 @@ import { reduxForm } from 'redux-form';
 import { validate } from './table-form-helpers';
 
 import { getTableData, getTableResults } from './table-form-selectors';
-import { tableBody } from './table-form-constants';
+import { TABLE_BODY } from './table-form-constants';
 import { TableForm } from './table-form-component';
 
 const mapStateToProps = createStructuredSelector({
@@ -16,7 +16,7 @@ const mapStateToProps = createStructuredSelector({
 export const TableFormController = compose(
   connect(mapStateToProps),
   reduxForm({
-    form: tableBody,
+    form: TABLE_BODY,
     validate,
     enableReinitialize: true,
   }),
