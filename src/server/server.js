@@ -1,7 +1,7 @@
 import data from './data-server';
 
 export const serverUpdateData = (dataForm) => {
-  if(dataForm) {
+  if (dataForm) {
     data.rows = [...dataForm.rows];
   }
   const promise = new Promise((response) => {

@@ -23,4 +23,35 @@ const data = {
   ],
 };
 
+// const data = {
+//   rows: [
+//     {
+//       name: 'test000',
+//       number: [0, 1, 1, 2],
+      
+//     },
+//     {
+//       name: 'test001',
+//       'number[0]': 0,
+//       'number[1]': 1,
+//       'number[2]': 2,
+//       'number[3]': 3,
+//     },
+//     {
+//       name: 'test002',
+//       'number[0]': 0,
+//       'number[1]': 1,
+//       'number[2]': 2,
+//       'number[3]': 3,
+//     },
+//     {
+//       name: 'test003',
+//       'number[0]': 0,
+//       'number[1]': 1,
+//       'number[2]': 2,
+//       'number[3]': 3,
+//     },
+//   ],
+// };
+
 export default data;

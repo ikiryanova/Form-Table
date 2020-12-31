@@ -1,1 +1,0 @@
-export { TableFormBodyComponent as TableFormBody } from './table-form-body-component';

@@ -1,1 +1,0 @@
-export { TableFormFooterComponent as TableFormFooter } from './table-form-body-footer';

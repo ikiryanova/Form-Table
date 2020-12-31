@@ -2,12 +2,10 @@ import React from 'react';
 
 import './preloader.css';
 
-const Preloader = () => {
+export const PreloaderComponent = () => {
   return (
     <div className="preloader">
       <div className="lds-dual-ring"></div>
     </div>
   );
 };
-
-export default Preloader;
