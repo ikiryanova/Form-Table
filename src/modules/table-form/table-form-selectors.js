@@ -3,10 +3,8 @@ import { get, zipWith } from 'lodash';
 
 import { TABLE_BODY } from './table-form-constants';
 
-const isLoading = (state) => state.table;
-export const getIsLoading = createSelector(isLoading, (isLoading) => get(isLoading, 'isLoading', []));
-
 const table = (state) => state.table;
+export const getIsLoading = createSelector(table, (table) => get(table, 'isLoading', []));
 export const getTableData = createSelector(table, (table) => get(table, 'data', []));
 
 const sumNumbers = (data) => {
