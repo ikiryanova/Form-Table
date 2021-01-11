@@ -1,0 +1,1 @@
+export { TableSectionsResultsComponent as TableSectionsResults } from './table-sections-results-component';
